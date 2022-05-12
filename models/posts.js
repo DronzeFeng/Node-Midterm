@@ -10,12 +10,13 @@ const postSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
     select: false,
   },
-  name: {
-    type: String,
-    required: [true, '貼文姓名未填寫'],
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User', // Reference by users.js in models
+    required: [true, '貼文者 ID 未填寫'],
   },
   likes: {
     type: Number,
@@ -23,5 +24,5 @@ const postSchema = new mongoose.Schema({
   },
 });
 // 當寫入mongodb時，會強制轉小寫，字尾強制加上 s
-const post = mongoose.model('post', postSchema);
-module.exports = post;
+const Post = mongoose.model('Post', postSchema);
+module.exports = Post;

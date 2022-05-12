@@ -3,7 +3,18 @@ const successHandle = require('../services/successHandle');
 const postModel = require('../models/posts');
 const posts = {
   async getPosts(req, res) {
-    const post = await postModel.find();
+    // asc 遞增(由小到大，由舊到新) createdAt ;
+    // desc 遞減(由大到小、由新到舊) "-createdAt"
+    const timeSort = req.query.timeSort == 'asc' ? 'createdAt' : '-createdAt';
+    const q =
+      req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
+    const post = await postModel
+      .find(q)
+      .populate({
+        path: 'user', // Path of collection:users
+        select: 'name photo ',
+      })
+      .sort(timeSort);
 
     successHandle(res, post);
   },
@@ -16,7 +27,7 @@ const posts = {
           content: body.content,
           image: body.image,
           createdAt: body.createdAt,
-          name: body.name,
+          user: body.user,
           likes: body.likes,
         });
 
