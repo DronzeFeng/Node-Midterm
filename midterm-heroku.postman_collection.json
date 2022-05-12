@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "057931e5-8d4b-45ae-892d-7714d2d4d959",
+		"name": "midterm-heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "請求所有貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "damp-oasis-66144.herokuapp.com/api/posts",
+					"host": [
+						"damp-oasis-66144",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆貼文",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\":\"627b6446854040cced862323\",\n    \"content\":\"測試資料7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "damp-oasis-66144.herokuapp.com/api/posts",
+					"host": [
+						"damp-oasis-66144",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "搜尋特定貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "damp-oasis-66144.herokuapp.com/api/posts?timeSort=asc&q=5",
+					"host": [
+						"damp-oasis-66144",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "q",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
